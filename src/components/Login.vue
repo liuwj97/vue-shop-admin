@@ -1,10 +1,13 @@
 <template>
   <div class="login-container">
     <div class="login-box">
+      <!-- 头部logo区域 -->
       <div class="avatar">
         <img src="../assets/logo.jpg" alt />
       </div>
+      <!-- 表单验证区域 -->
       <el-form :model="loginForm" :rules="loginRules" ref="loginFormRef">
+        <!-- 用户名输入框 -->
         <el-form-item prop="username">
           <el-input
             v-focus
@@ -14,7 +17,9 @@
             clearable
           ></el-input>
         </el-form-item>
+         <!-- 密码输入框 -->
         <el-form-item prop="password">
+          <!-- 监听原生键盘事件需要加上 native 修饰符-->
           <el-input
             prefix-icon="iconfont icon-3702mima"
             v-model="loginForm.password"
@@ -23,6 +28,7 @@
             clearable
           ></el-input>
         </el-form-item>
+        <!-- 底部按钮区域 -->
         <el-form-item class="loginBtns">
           <el-button type="primary" @click="login">登录</el-button>
           <el-button type="info" @click="restLoginForm">重置</el-button>
@@ -36,10 +42,12 @@
 export default {
   data() {
     return {
+      // 登录表单数据
       loginForm: {
         username: "admin",
         password: "123456"
       },
+      // 登录表单验证规则
       loginRules: {
         username: [
           {
@@ -57,7 +65,7 @@ export default {
         password: [
           {
             required: true,
-            message: "请输入用户名",
+            message: "请输入密码",
             trigger: "blur"
           },
           {
@@ -71,7 +79,9 @@ export default {
     };
   },
   methods: {
+    // 登录功能
     login() {
+      // 登录表单预验证
       this.$refs.loginFormRef.validate(async valid => {
         if (!valid) return this.$message.error("用户名或密码错误");
         const { data: res } = await this.$axios.post("login", this.loginForm);
@@ -79,15 +89,17 @@ export default {
           return this.$message.error("用户名或密码错误");
         this.$message.success("登录成功");
         console.log(res);
+        // 把服务器返回的token保存到sessionStorage中
         sessionStorage.setItem("token", res.data.token);
+        // 跳转到欢迎页面
         this.$router.push("/index");
       });
     },
+    // 重置表单
     restLoginForm() {
       this.$refs.loginFormRef.resetFields();
     }
-  },
-  mounted() {}
+  }
 };
 </script>
 
