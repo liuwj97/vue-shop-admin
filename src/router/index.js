@@ -4,6 +4,8 @@ import Login from '../components/Login.vue'
 import Index from '../components/Index.vue'
 import Welcome from '../components/Welcome.vue'
 import Users from '../views/users/Users.vue'
+import Powers from '../views/power/Powers.vue'
+import Roles from '../views/power/Roles.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +35,20 @@ const routes = [{
         name: 'users',
         meta: {
             title: '用户列表'
+        }
+    }, {
+        path: '/rights',
+        component: Powers,
+        name: 'powers',
+        meta: {
+            title: '权限列表'
+        }
+    }, {
+        path: '/roles',
+        component: Roles,
+        name: 'roles',
+        meta: {
+            title: '角色列表'
         }
     }]
 }]
