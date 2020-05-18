@@ -6,6 +6,7 @@ import Welcome from '../components/Welcome.vue'
 import Users from '../views/users/Users.vue'
 import Powers from '../views/power/Powers.vue'
 import Roles from '../views/power/Roles.vue'
+import Goods from '../views/goods/Goods.vue'
 
 Vue.use(VueRouter)
 
@@ -49,6 +50,13 @@ const routes = [{
         name: 'roles',
         meta: {
             title: '角色列表'
+        }
+    }, {
+        path: '/goods',
+        component: Goods,
+        name: 'goods',
+        meta: {
+            title: '商品列表'
         }
     }]
 }]

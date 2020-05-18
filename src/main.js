@@ -11,6 +11,8 @@ import './assets/css/global.css'
 import './assets/fonts/iconfont.css'
 // 导入自定义指令
 import './directives/focus'
+// 导入自定义过滤器
+import './filters/dateFormat'
 // 导入axios依赖
 import axios from 'axios'
 // 设置基础url
