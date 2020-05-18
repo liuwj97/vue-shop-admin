@@ -12,3 +12,8 @@ body,
 .el-table {
     margin-top: 20px;
 }
+
+.el-dialog {
+    max-height: 610px;
+    overflow-y: scroll;
+}
